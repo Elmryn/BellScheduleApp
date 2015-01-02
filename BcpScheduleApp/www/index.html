@@ -1,0 +1,339 @@
+<!DOCTYPE html><!--HTML5 doctype-->
+<html>
+<head>
+	<title>Schedule</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<style type="text/css">
+		/* Prevent copy paste for all elements except text fields */
+		*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+		input, textarea  { -webkit-user-select:text; }
+		body { background-color:white; color:black }
+	</style>
+	<script src='intelxdk.js'></script>
+	<script type="text/javascript">
+		/* This code is used to run as soon as Intel activates */
+		var onDeviceReady=function(){
+		//hide splash screen
+		intel.xdk.device.hideSplashScreen();
+		};
+		document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+	</script>
+    <script src="jquery-1.11.0uncompressed.js"></script>
+    
+    <script src="ScheduleQuery.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
+    <script type="text/javascript">
+        var d = new Date();
+var h = d.getHours();
+var m = d.getMinutes();
+
+/*if (h > 12) {
+    h = h-12;
+}else if (h === 0){
+    h = 12;
+}else {
+    h = h;
+}
+if (m < 10){
+    m = "0" + m;
+}else{
+    m = m;
+}
+var time = h + ":" + m; */
+var percent = 50;
+var day = "today";
+
+
+var pOne = null;
+var pTwo = null;
+var pThree = null;
+var pFour = null;
+var pFive = null;
+var pSix = null;
+
+
+
+function currentPeriod () {
+    document.getElementById("Period").innerHTML=time;
+    $('.progress').val(percent); 
+}
+
+
+function change1(){
+    var first = prompt("First Class?","");
+    document.getElementById("class1").innerHTML = first;
+    document.getElementById("clas1").innerHTML = first;
+    return first;
+}
+
+function change2(){
+    var second = prompt("Second Class?","");
+    document.getElementById("class2").innerHtml = second;
+    document.getElementById("clas2").innerHTML = second;
+    return second;
+}
+function change3(){
+    var three = prompt("Third Class?","");
+    document.getElementById("class3").innerHTML = three;
+    document.getElementById("clas3").innerHTML = three;
+    return three;
+}
+function change4(){
+    var fourth = prompt("Fourth Class?","");
+    document.getElementById("class4").innerHTML = fourth;
+    document.getElementById("clas4").innerHTML = fourth;
+    return fourth;
+}
+function change5(){
+    var fifth = prompt("Fifth Class?","");
+    document.getElementById("class5").innerHTML = fifth;
+    document.getElementById("clas5").innerHTML = fifth;
+    return fifth;
+}
+function change6(){
+    var sixth = prompt("Sixth Class?","");
+    document.getElementById("class6").innerHTML = sixth;
+    document.getElementById("clas6").innerHTML = sixth;
+    return sixth;
+}
+function change7(){
+    var seventh = prompt("Seventh Class?","");
+    document.getElementById("class7").innerHTML = seventh;
+    document.getElementById("clas7").innerHTML = seventh;
+    return seventh;
+}
+       
+        var classOne = first;
+        var classTwo = second;
+        var classThree= third;
+        var classFour=fourth;
+        var classFive=fifth;
+        var classSix=sixth;
+        var classSeven=seventh;
+function trial(){
+            
+            alert("classOne");
+            }
+    //LOCAL STORAGE
+        localStorage.setItem('p1', one.value);
+        localStorage.setItem('p2', two.value);
+        localStorage.setItem('p3', three.value);
+        localStorage.setItem('p4', four.value);
+        localStorage.setItem('p5',five.value);
+        localStorage.setItem('p6', six.value);
+        localStorage.setItem('p7', seven.value);
+        var classOne = localStorage.getItem('p1');
+        var classTwo = localStorage.getItem('p2');
+        var classThree = localStorage.getItem('p3');
+        var classFour = localStorage.getItem('p4');
+        var classFive = localStorage.getItem('p5');
+        var classSix = localStorage.getItem('p6');
+        var classSeven = localStorage.getItem('p7');
+        
+        switch (new Date().getDay()) {
+    case 0:
+        day = "Sunday";
+        break;
+    case 1:
+        day = "Monday";
+        break;
+    case 2:
+        day = "Tuesday";
+        break;
+    case 3:
+        day = "Wednesday";
+        break;
+    case 4:
+        day = "Thursday";
+        break;
+    case 5:
+        day = "Friday";
+        break;
+    case 6:
+        day = "Saturday";
+        break;
+}
+
+switch (new Date().getday()){
+        case 0:
+            pOne = "No School!";
+            pTwo = "No School!";
+            pThree = "No School!";
+            pFour = "No School!";
+            pFive = "No School!";
+            pSix = "No School!";
+            break;
+        case 1:
+            pOne=classOne;
+            pTwo=classTwo;
+            pThree=classThree;
+            pFour=classFour;
+            pFive=classFive;
+            pSix=classSix;
+            break;
+        case 2:
+            pOne=classOne;
+            pTwo=classSeven;
+            pThree=classTwo;
+            pFour=classThree;
+            pFive=classFour;
+            pSix=classFive;
+            break;
+        case 3:
+            pOne=classOne;
+            pTwo=classSix;
+            pThree=classSeven;
+            pFour=classTwo;
+            pFive=classThree;
+            pSix="Not Meeting Today";
+            break;
+        case 4:
+            pOne=classOne;
+            pTwo=classFour;
+            pThree=classFive;
+            pFour=classSix;
+            pFive=classSeven;
+            pSix=classTwo;
+            break;
+        case 5:
+            pOne=classThree;
+            pTwo=classFour;
+            pThree=classFive;
+            pFour=classSix;
+            pFive=classSeven;
+            pSix="Not Meeting Today";
+            break;
+        case 6:
+            pOne = "No School!";
+            pTwo = "No School!";
+            pThree = "No School!";
+            pFour = "No School!";
+            pFive = "No School!";
+            pSix = "No School!";
+            break;
+}
+        
+function reload(){
+        if (day == "Monday" || day == "Tuesday" || day == "Thursday"){
+            if ( h >= 8 && h <9 && m >= 15 && m < 5){
+                document.getElementById("Period").innerHTML = pOne;
+                document.getElementById("Next").innerHTML = pTwo;
+            }else if (h >= 9 && h <10 ){
+                document.getElementById("Period").innerHTML = pTwo;
+                document.getElementById("Next").innerHTML = pThree;
+            }else if (h >=10 && h <11){
+                document.getElementById("Period").innerHTML = pThree;
+                document.getElementById("Next").innerHTML = pFour;
+            }else if (h >=11 && h <12) {
+                document.getElementById("Period").innerHTML = pFour;
+                document.getElementById("Next").innerHTML = "Lunch";
+            }else if (h >=12 && h <13){
+                document.getElementById("Period").innerHTML = "Lunch";
+                document.getElementById("Next").innerHTML = pFive;
+            }else if (h >=13 && h<14){
+                document.getElementById("Period").innerHTML =pFive ;
+                document.getElementById("Next").innerHTML = pSix;
+            }else if (h >= 14 && h < 15){
+                document.getElementById("Period").innerHTML = pSix;
+                document.getElementById("Next").innerHTML = "Dismissal";
+            }else {
+                document.getElementById("Period").innherHTML = "School is Over";
+                document.getElementById("Next").innerHTML = "School is Over";
+            }
+        }else if (day == "Wednesday"){
+            if (h >= 9 && h <10 ){
+                document.getElementById("Period").innerHTML = pOne;
+                document.getElementById("Next").innerHTML = pTwo;
+            }else if (h >=10 && h <11){
+                document.getElementById("Period").innerHTML = pTwo;
+                document.getElementById("Next").innerHTML = pThree;
+            }else if (h >=11 && h <12) {
+                document.getElementById("Period").innerHTML = pThree;
+                document.getElementById("Next").innerHTML = "Lunch";
+            }else if (h >=12 && h <13){
+                document.getElementById("Period").innerHTML = "Lunch";
+                document.getElementById("Next").innerHTML = pFour;
+            }else if (h >=13 && h<14){
+                document.getElementById("Period").innerHTML =pFour ;
+                document.getElementById("Next").innerHTML = pFive;
+            }else if (h >= 14 && h < 15){
+                document.getElementById("Period").innerHTML = pFive;
+                document.getElementById("Next").innerHTML = "Dismissal";
+            }else {
+                document.getElementById("Period").innherHTML = "School is Over";
+                document.getElementById("Next").innerHTML = "School is Over";
+            }
+        }else if (day == "Friday"){
+            if ( h >= 8 && h <9 && m >= 15 && m < 5){
+                document.getElementById("Period").innerHTML = pOne;
+                document.getElementById("Next").innerHTML = pTwo;
+            }else if (h >= 9 && h <10 ){
+                document.getElementById("Period").innerHTML = pTwo;
+                document.getElementById("Next").innerHTML = pThree;
+            }else if (h >=10 && h <11){
+                document.getElementById("Period").innerHTML = pThree;
+                document.getElementById("Next").innerHTML = pFour;
+            }else if (h >=11 && h <12) {
+                document.getElementById("Period").innerHTML = pFour;
+                document.getElementById("Next").innerHTML = "Break";
+            }else if (h >=12 && h <13){
+                document.getElementById("Period").innerHTML = "Break";
+                document.getElementById("Next").innerHTML = pFive;
+            }else if (h >=13 && h<14){
+                document.getElementById("Period").innerHTML =pFive ;
+                document.getElementById("Next").innerHTML = "Dismissal";
+            }else {
+                document.getElementById("Period").innherHTML = "School is Over";
+                document.getElementById("Next").innerHTML = "School is Over";
+            }
+        }else {
+            document.getElementById("Period").innerHTML = "No School";
+            document.getElementById("Next").innerHTML = "No School";
+        }
+}
+    </script>
+</head>
+<body style="background-image: url(bellarmine-b-cropped.jpg); background-repeat: no-repeat;">
+    <div id="index" style="position:absolute; right:25px; left:25px; text-align:center;">
+        <p>Current Period:</p>
+        <br>
+        <p id="Period" class="jumbotron">Its Period 0</p>
+        <p>Next Period:</p>
+        <br>
+        <p id="Next" class="jumbotron">Up Next</p>
+        <button onclick="reload()">Reload</button>
+      
+    </div>
+    <div id="classes" style=" position:fixed; bottom:0;border-style:solid; border-width:5px; background-color:#bdc3c7;">
+        <ol>
+            <li id="clas1"></li>
+            <li id="clas2"></li>
+            <li id="clas3"></li>
+            <li id="clas4"></li>
+            <li id="clas5"></li>
+            <li id="clas6"></li>
+            <li id="clas7"></li>
+        </ol>
+        <button id="confirm">These are my classes</button> <button id="change">Change Classes</button>
+    </div>
+    <div id="classentry">
+            Period 1: <p id="class1">History</p><button id="changeClass1" onclick="change1()">Change</button>                
+            <br>
+            Period 2: <p id="class2">English</p><button id="changeClass2" onclick="change2()">Change</button>                
+            <br>
+            Period 3: <p id="class3">Latin</p><button id="changeClass3" onclick="change3()">Change</button>
+            <br>
+            Period 4: <p id="class4">Art</p><button id="changeClass4" onclick="change4()">Change</button>
+            <br>
+            Period 5: <p id="class5">Religion</p><button id="changeClass5" onclick="change5()">Change</button>
+            <br>
+            Period 6: <p id="class6">Chemistry</p><button id="changeClass6" onclick="change6()">Change</button>
+            <br>
+            Period 7: <p id="class7">Pre-Calculus</p><button id="changeClass7" onclick="change7()">Change</button>
+        <button id="changed">Confirm</button>
+    </div>
+    <button id="tab" style=" position:absolute; bottom:0; right:25px; left: 25px;">My Classes</button>
+</body>
+</html>
